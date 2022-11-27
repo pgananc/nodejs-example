@@ -1,0 +1,30 @@
+union Result = Employee | Department
+
+type Query {
+  ListEmployees: [Employee]
+  GetEmployee(id: Int!): Employee
+  Search(search: Int): [Result!]
+}
+
+type Mutation {
+  CreateEmployee(body: EmployeeBody): Employee
+  RemoveEmployee(id: Int!): [Employee]
+}
+
+input EmployeeBody {
+  name: String!
+  age: Int
+  status: Boolean!
+}
+type Employee {
+  name: String!
+  age: Int
+  status: Boolean!
+  id: Int!
+}
+
+type Department {
+  name: String!
+  description: String!
+  status: Boolean!
+}
